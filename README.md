@@ -11,5 +11,5 @@ To run:
 2) switch the name of bert model in GetVecFile.sh from fine_tune_lm_bioBERT to whatever folder your model is saved in.
 
 ## Elmo
-
+If you want full length model with the 1024 dim, use elmo1024.sh. However if you want a model that is reduced to 768 to be the same dimension of BERT, use elmo768.sh
 
