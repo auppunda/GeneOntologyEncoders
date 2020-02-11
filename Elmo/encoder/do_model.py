@@ -45,10 +45,6 @@ all_name_array = list (all_name_array[0])
 args.num_label = len(all_name_array)
 
 ## **** load label description data ****
-for i in all_name_array:
-  if i == "GO:0043566":
-    print("IM HOME")
-
 if args.w2v_emb is not None: ## we can just treat each node as a vector without word description 
   Vocab = load_vocab(args.vocab_list) # all words found in pubmed and trained in w2v ... should trim down
 
@@ -159,10 +155,6 @@ if args.write_vector:
   examples = AllLabelDesc.get_examples( args.label_desc_dir ) ## file @label_desc_dir is tab delim 
   examples = data_loader.convert_label_desc_to_features ( examples , MAX_SEQ_LEN, tokenizer=Vocab, tokenize_style="space", all_name_array=all_name_array )
   AllLabelLoader, GO_names = data_loader.label_loader_for_write(examples,64) ## should be able to handle 64 labels at once 
-  print(GO_names)
-  for i in GO_names:
-     if i == 43566:
-       print("FUCK TRIGGERS")
   label_emb = model.write_label_vector( AllLabelLoader,os.path.join(args.result_folder,"label_vector.txt"), GO_names )
 
 
